@@ -1,16 +1,17 @@
 package com.rvnu.models.thirdparty.draftkings;
 
-import java.math.BigDecimal;
+import org.javamoney.moneta.Money;
+
 import java.util.Objects;
 
 public class EntryFee {
-    private final BigDecimal value;
+    private final Money value;
 
-    public EntryFee(final BigDecimal value) {
+    public EntryFee(final Money value) {
         this.value = value;
     }
 
-    public BigDecimal getValue() {
+    public Money getValue() {
         return value;
     }
 

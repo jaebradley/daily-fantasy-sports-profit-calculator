@@ -1,16 +1,17 @@
 package com.rvnu.models.thirdparty.draftkings;
 
-import java.math.BigDecimal;
+import org.javamoney.moneta.Money;
+
 import java.util.Objects;
 
 public class PrizePool {
-    private final BigDecimal value;
+    private final Money value;
 
-    public PrizePool(final BigDecimal value) {
+    public PrizePool(final Money value) {
         this.value = value;
     }
 
-    public BigDecimal getValue() {
+    public Money getValue() {
         return value;
     }
 

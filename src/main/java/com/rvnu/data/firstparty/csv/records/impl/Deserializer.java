@@ -30,7 +30,7 @@ public class Deserializer implements com.rvnu.data.firstparty.csv.records.interf
                 format
         )) {
             for (final CSVRecord record : parser) {
-                resultDeserializer.deserialize()
+//                resultDeserializer.deserialize();
             }
         } catch (IOException e) {
             throw new UnableToDeserializeRecords();

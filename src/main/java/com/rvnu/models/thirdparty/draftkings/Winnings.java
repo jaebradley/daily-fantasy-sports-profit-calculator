@@ -1,22 +1,23 @@
 package com.rvnu.models.thirdparty.draftkings;
 
-import java.math.BigDecimal;
+import org.javamoney.moneta.Money;
+
 import java.util.Objects;
 
 public class Winnings {
-    private final BigDecimal nonTicket;
-    private final BigDecimal ticket;
+    private final Money nonTicket;
+    private final Money ticket;
 
-    public Winnings(final BigDecimal nonTicket, final BigDecimal ticket) {
+    public Winnings(final Money nonTicket, final Money ticket) {
         this.nonTicket = nonTicket;
         this.ticket = ticket;
     }
 
-    public BigDecimal getNonTicket() {
+    public Money getNonTicket() {
         return nonTicket;
     }
 
-    public BigDecimal getTicket() {
+    public Money getTicket() {
         return ticket;
     }
 
