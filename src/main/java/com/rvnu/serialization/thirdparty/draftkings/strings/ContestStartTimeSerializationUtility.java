@@ -38,7 +38,8 @@ public class ContestStartTimeSerializationUtility implements Serializer<ContestS
 
     @Override
     public Optional<ContestStartTime> deserialize(final String value) {
-        return localDateTimeDeserializer.deserialize(value)
+        return localDateTimeDeserializer
+                .deserialize(value)
                 .map(localDateTime -> localDateTime.atZone(timeZone))
                 .map(ChronoZonedDateTime::toInstant)
                 .map(ContestStartTime::new);

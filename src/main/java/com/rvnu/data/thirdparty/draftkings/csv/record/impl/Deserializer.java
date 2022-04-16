@@ -1,9 +1,7 @@
 package com.rvnu.data.thirdparty.draftkings.csv.record.impl;
 
 import com.rvnu.data.firstparty.csv.record.interfaces.Record;
-import com.rvnu.models.thirdparty.draftkings.ContestEntryResult;
-import com.rvnu.models.thirdparty.draftkings.EntryKey;
-import com.rvnu.models.thirdparty.draftkings.Sport;
+import com.rvnu.models.thirdparty.draftkings.*;
 import io.vavr.control.Either;
 
 public class Deserializer implements com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<
@@ -25,7 +23,7 @@ public class Deserializer implements com.rvnu.data.firstparty.csv.record.interfa
         CONTEST_ENTRIES,
         ENTRY_FEE,
         PRIZE_POOL,
-        PLACES_PAID;,
+        PLACES_PAID,
     }
 
 
@@ -46,8 +44,47 @@ public class Deserializer implements com.rvnu.data.firstparty.csv.record.interfa
         COLUMN_DOES_NOT_EXIST,
     }
 
+    // TODO: @jbradley check unused column values for appropriate format
     private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<Sport, Column, Error> sportDeserializer;
     private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<EntryKey, Column, Error> entryKeyDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<ContestKey, Column, Error> contestKeyDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<ContestStartTime, Column, Error> startTimeDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<ContestPlace, Column, Error> contestPlaceDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<EntryPoints, Column, Error> entryPointsDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<NonTicketWinnings, Column, Error> nonTicketWinningsDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<TicketWinnings, Column, Error> ticketWinningsDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<ContestEntries, Column, Error> contestEntriesDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<EntryFee, Column, Error> entryFeeDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<PrizePool, Column, Error> prizePoolDeserializer;
+    private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<PlacesPaid, Column, Error> placesPaidDeserializer;
+
+    private Deserializer(
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<Sport, Column, Error> sportDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<EntryKey, Column, Error> entryKeyDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<ContestKey, Column, Error> contestKeyDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<ContestStartTime, Column, Error> startTimeDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<ContestPlace, Column, Error> contestPlaceDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<EntryPoints, Column, Error> entryPointsDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<NonTicketWinnings, Column, Error> nonTicketWinningsDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<TicketWinnings, Column, Error> ticketWinningsDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<ContestEntries, Column, Error> contestEntriesDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<EntryFee, Column, Error> entryFeeDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<PrizePool, Column, Error> prizePoolDeserializer,
+            final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<PlacesPaid, Column, Error> placesPaidDeserializer
+    ) {
+        this.sportDeserializer = sportDeserializer;
+        this.entryKeyDeserializer = entryKeyDeserializer;
+        this.contestKeyDeserializer = contestKeyDeserializer;
+        this.startTimeDeserializer = startTimeDeserializer;
+        this.contestPlaceDeserializer = contestPlaceDeserializer;
+        this.entryPointsDeserializer = entryPointsDeserializer;
+        this.nonTicketWinningsDeserializer = nonTicketWinningsDeserializer;
+        this.ticketWinningsDeserializer = ticketWinningsDeserializer;
+        this.contestEntriesDeserializer = contestEntriesDeserializer;
+        this.entryFeeDeserializer = entryFeeDeserializer;
+        this.prizePoolDeserializer = prizePoolDeserializer;
+        this.placesPaidDeserializer = placesPaidDeserializer;
+    }
 
     @Override
     public Either<Error, ContestEntryResult> deserialize(final Record<Column> record) {
@@ -57,9 +94,43 @@ public class Deserializer implements com.rvnu.data.firstparty.csv.record.interfa
         // if deserializer does not return a present value, return invalid column error
         return sportDeserializer.deserialize(record)
                 .flatMap(sport -> entryKeyDeserializer.deserialize(record).flatMap(
-                        entryKey -> {
-
-                        }
+                        entryKey -> contestKeyDeserializer.deserialize(record).flatMap(
+                                contestKey -> startTimeDeserializer.deserialize(record).flatMap(
+                                        startTime -> contestPlaceDeserializer.deserialize(record).flatMap(
+                                                place -> entryPointsDeserializer.deserialize(record).flatMap(
+                                                        points -> nonTicketWinningsDeserializer.deserialize(record).flatMap(
+                                                                nonTicketWinnings -> ticketWinningsDeserializer.deserialize(record).flatMap(
+                                                                        ticketWinnings -> contestEntriesDeserializer.deserialize(record).flatMap(
+                                                                                contestEntries -> entryFeeDeserializer.deserialize(record).flatMap(
+                                                                                        entryFee -> prizePoolDeserializer.deserialize(record).flatMap(
+                                                                                                prizePool -> placesPaidDeserializer.deserialize(record).map(
+                                                                                                        placesPaid ->
+                                                                                                                new ContestEntryResult(
+                                                                                                                        sport,
+                                                                                                                        entryKey,
+                                                                                                                        contestKey,
+                                                                                                                        startTime,
+                                                                                                                        place,
+                                                                                                                        points,
+                                                                                                                        new Winnings(
+                                                                                                                                nonTicketWinnings,
+                                                                                                                                ticketWinnings
+                                                                                                                        ),
+                                                                                                                        contestEntries,
+                                                                                                                        entryFee,
+                                                                                                                        prizePool,
+                                                                                                                        placesPaid
+                                                                                                                )
+                                                                                                )
+                                                                                        )
+                                                                                )
+                                                                        )
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
                 ));
     }
 }
