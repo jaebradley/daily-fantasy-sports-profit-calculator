@@ -1,6 +1,7 @@
 package com.rvnu.data.thirdparty.draftkings.csv.record.impl;
 
 import com.rvnu.data.firstparty.csv.record.interfaces.Record;
+import com.rvnu.data.thirdparty.draftkings.csv.record.columns.*;
 import com.rvnu.models.thirdparty.draftkings.*;
 import io.vavr.control.Either;
 
@@ -14,12 +15,13 @@ public class Deserializer implements com.rvnu.data.firstparty.csv.record.interfa
         SPORT,
         GAME_TYPE,
         ENTRY_KEY,
-        ENTRY,
+        ENTRY_NAME,
         CONTEST_KEY,
         CONTEST_START_TIME,
         CONTEST_PLACE,
-        CONTEST_POINTS,
-        WINNINGS,
+        ENTRY_POINTS,
+        NON_TICKET_WINNINGS,
+        TICKET_WINNINGS,
         CONTEST_ENTRIES,
         ENTRY_FEE,
         PRIZE_POOL,
@@ -31,18 +33,34 @@ public class Deserializer implements com.rvnu.data.firstparty.csv.record.interfa
         INVALID_SPORT,
         INVALID_GAME_TYPE,
         INVALID_ENTRY_KEY,
-        INVALID_ENTRY,
+        INVALID_ENTRY_NAME,
         INVALID_CONTEST_KEY,
         INVALID_CONTEST_START_TIME,
         INVALID_CONTEST_PLACE,
-        INVALID_CONTEST_POINTS,
-        INVALID_WINNINGS,
+        INVALID_ENTRY_POINTS,
+        INVALID_NON_TICKET_WINNINGS,
+        INVALID_TICKET_WINNINGS,
         INVALID_CONTEST_ENTRIES,
         INVALID_ENTRY_FEE,
         INVALID_PRIZE_POOL,
         INVALID_PLACES_PAID,
         COLUMN_DOES_NOT_EXIST,
     }
+
+    private static final Deserializer INSTANCE = new Deserializer(
+            SportDeserializer.getInstance(),
+            EntryKeyDeserializer.getInstance(),
+            ContestKeyDeserializer.getInstance(),
+            ContestStartTimeDeserializer.getInstance(),
+            ContestPlaceDeserializer.getInstance(),
+            EntryPointsDeserializer.getInstance(),
+            NonTicketWinningsDeserializer.getInstance(),
+            TicketWinningsDeserializer.getInstance(),
+            ContestEntriesDeserializer.getInstance(),
+            EntryFeeDeserializer.getInstance(),
+            PrizePoolDeserializer.getInstance(),
+            PlacesPaidDeserializer.getInstance()
+    );
 
     // TODO: @jbradley check unused column values for appropriate format
     private final com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<Sport, Column, Error> sportDeserializer;
@@ -132,5 +150,9 @@ public class Deserializer implements com.rvnu.data.firstparty.csv.record.interfa
                                 )
                         )
                 ));
+    }
+
+    public static Deserializer getInstance() {
+        return INSTANCE;
     }
 }

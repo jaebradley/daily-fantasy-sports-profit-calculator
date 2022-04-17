@@ -19,7 +19,7 @@ public class ContestStartTimeSerializationUtility implements Serializer<ContestS
                     DateTimeFormatter.ofPattern("YYYY-MM-DD HH:mm:ss")
             ) {
             },
-            ZoneId.of("Eastern/New_York")
+            ZoneId.of("America/New_York")
     );
 
     private final Serializer<Instant> startTimeSerializer;
@@ -47,7 +47,7 @@ public class ContestStartTimeSerializationUtility implements Serializer<ContestS
 
     @Override
     public String serialize(final ContestStartTime value) {
-        return startTimeSerializer.serialize(value.getValue());
+        return startTimeSerializer.serialize(value.value());
     }
 
     public static ContestStartTimeSerializationUtility getInstance() {

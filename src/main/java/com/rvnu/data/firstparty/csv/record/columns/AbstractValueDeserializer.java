@@ -11,12 +11,12 @@ public abstract class AbstractValueDeserializer<Value, Column extends Enum<?>, E
     private final Error invalidValueError;
 
     public AbstractValueDeserializer(
-            final com.rvnu.serialization.firstparty.strings.interfaces.Deserializer<Value> contestEntriesDeserializer,
+            final com.rvnu.serialization.firstparty.strings.interfaces.Deserializer<Value> valueDeserializer,
             final Column column,
             final Error columnDoesNotExistError,
             final Error invalidValueError
     ) {
-        this.valueDeserializer = contestEntriesDeserializer;
+        this.valueDeserializer = valueDeserializer;
         this.column = column;
         this.columnDoesNotExistError = columnDoesNotExistError;
         this.invalidValueError = invalidValueError;

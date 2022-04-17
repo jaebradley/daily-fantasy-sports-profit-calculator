@@ -3,6 +3,16 @@ package com.rvnu.models.thirdparty.iso;
 import java.util.Objects;
 
 public class PositiveInteger extends NaturalNumber {
+    public static final PositiveInteger ONE;
+
+    static {
+        try {
+            ONE = new PositiveInteger(1);
+        } catch (ValueMustBePositive | ValueMustNotBeNegative e) {
+            throw new IllegalStateException();
+        }
+    }
+
     public static class ValueMustBePositive extends Exception {
         public ValueMustBePositive() {
         }
