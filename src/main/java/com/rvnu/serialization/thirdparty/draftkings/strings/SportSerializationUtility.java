@@ -1,6 +1,6 @@
 package com.rvnu.serialization.thirdparty.draftkings.strings;
 
-import com.rvnu.models.thirdparty.draftkings.Sport;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.Sport;
 import com.rvnu.serialization.firstparty.strings.impl.AbstractEnumSerializationUtility;
 
 import java.util.Arrays;

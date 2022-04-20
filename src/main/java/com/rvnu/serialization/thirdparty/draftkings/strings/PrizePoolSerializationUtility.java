@@ -1,6 +1,6 @@
 package com.rvnu.serialization.thirdparty.draftkings.strings;
 
-import com.rvnu.models.thirdparty.draftkings.PrizePool;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.PrizePool;
 import com.rvnu.models.thirdparty.iso.NonNegativeMonetaryValue;
 import com.rvnu.serialization.firstparty.strings.impl.AbstractNonNegativeMonetaryValueSerializationUtility;
 import org.javamoney.moneta.Money;

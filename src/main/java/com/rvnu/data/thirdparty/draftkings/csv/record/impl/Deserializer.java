@@ -2,7 +2,7 @@ package com.rvnu.data.thirdparty.draftkings.csv.record.impl;
 
 import com.rvnu.data.firstparty.csv.record.interfaces.Record;
 import com.rvnu.data.thirdparty.draftkings.csv.record.columns.*;
-import com.rvnu.models.thirdparty.draftkings.*;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.*;
 import io.vavr.control.Either;
 
 public class Deserializer implements com.rvnu.data.firstparty.csv.record.interfaces.Deserializer<

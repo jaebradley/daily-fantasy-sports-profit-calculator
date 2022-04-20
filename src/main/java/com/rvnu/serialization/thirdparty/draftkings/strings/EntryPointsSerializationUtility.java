@@ -1,6 +1,6 @@
 package com.rvnu.serialization.thirdparty.draftkings.strings;
 
-import com.rvnu.models.thirdparty.draftkings.EntryPoints;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.EntryPoints;
 import com.rvnu.serialization.firstparty.strings.impl.DecimalSerializationUtility;
 import com.rvnu.serialization.firstparty.strings.interfaces.Deserializer;
 import com.rvnu.serialization.firstparty.strings.interfaces.Serializer;

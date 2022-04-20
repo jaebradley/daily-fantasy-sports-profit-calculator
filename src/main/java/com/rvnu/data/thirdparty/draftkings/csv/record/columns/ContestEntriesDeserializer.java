@@ -2,7 +2,7 @@ package com.rvnu.data.thirdparty.draftkings.csv.record.columns;
 
 import com.rvnu.data.firstparty.csv.record.columns.AbstractValueDeserializer;
 import com.rvnu.data.thirdparty.draftkings.csv.record.impl.Deserializer;
-import com.rvnu.models.thirdparty.draftkings.ContestEntries;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.ContestEntries;
 import com.rvnu.serialization.thirdparty.draftkings.strings.ContestEntriesSerializationUtility;
 
 public class ContestEntriesDeserializer extends AbstractValueDeserializer<ContestEntries, Deserializer.Column, Deserializer.Error> {

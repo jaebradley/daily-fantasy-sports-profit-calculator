@@ -2,7 +2,7 @@ package com.rvnu.data.thirdparty.draftkings.csv.record.columns;
 
 import com.rvnu.data.firstparty.csv.record.columns.AbstractValueDeserializer;
 import com.rvnu.data.thirdparty.draftkings.csv.record.impl.Deserializer;
-import com.rvnu.models.thirdparty.draftkings.ContestStartTime;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.ContestStartTime;
 import com.rvnu.serialization.thirdparty.draftkings.strings.ContestStartTimeSerializationUtility;
 
 public class ContestStartTimeDeserializer extends AbstractValueDeserializer<ContestStartTime, Deserializer.Column, Deserializer.Error> {

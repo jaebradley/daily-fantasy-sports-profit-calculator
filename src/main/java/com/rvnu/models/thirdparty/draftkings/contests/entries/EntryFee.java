@@ -1,4 +1,4 @@
-package com.rvnu.models.thirdparty.draftkings;
+package com.rvnu.models.thirdparty.draftkings.contests.entries;
 
 import com.rvnu.models.thirdparty.iso.NonNegativeMonetaryValue;
 import org.javamoney.moneta.Money;

@@ -1,6 +1,6 @@
 package com.rvnu.serialization.thirdparty.draftkings.strings;
 
-import com.rvnu.models.thirdparty.draftkings.ContestEntries;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.ContestEntries;
 import com.rvnu.models.thirdparty.iso.NaturalNumber;
 import com.rvnu.serialization.firstparty.strings.impl.AbstractNaturalNumberSerializationUtility;
 import com.rvnu.serialization.firstparty.strings.impl.IntegerSerializationUtility;

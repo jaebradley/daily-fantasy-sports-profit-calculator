@@ -1,4 +1,4 @@
-package com.rvnu.models.thirdparty.draftkings;
+package com.rvnu.models.thirdparty.draftkings.contests.entries;
 
 public record ContestEntryResult(
         Sport sport,

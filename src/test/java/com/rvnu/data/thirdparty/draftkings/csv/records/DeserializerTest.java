@@ -1,6 +1,6 @@
 package com.rvnu.data.thirdparty.draftkings.csv.records;
 
-import com.rvnu.models.thirdparty.draftkings.*;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.*;
 import com.rvnu.models.thirdparty.iso.NaturalNumber;
 import com.rvnu.models.thirdparty.iso.NonNegativeMonetaryValue;
 import com.rvnu.models.thirdparty.iso.PositiveInteger;

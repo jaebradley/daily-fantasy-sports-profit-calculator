@@ -1,6 +1,6 @@
 package com.rvnu.serialization.thirdparty.draftkings.strings;
 
-import com.rvnu.models.thirdparty.draftkings.ContestStartTime;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.ContestStartTime;
 import com.rvnu.serialization.firstparty.strings.impl.AbstractLocalDateTimeSerializationUtility;
 import com.rvnu.serialization.firstparty.strings.interfaces.Deserializer;
 import com.rvnu.serialization.firstparty.strings.interfaces.Serializer;

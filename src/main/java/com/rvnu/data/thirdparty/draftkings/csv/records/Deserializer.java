@@ -1,7 +1,7 @@
 package com.rvnu.data.thirdparty.draftkings.csv.records;
 
 import com.rvnu.data.firstparty.csv.records.impl.AbstractDeserializer;
-import com.rvnu.models.thirdparty.draftkings.ContestEntryResult;
+import com.rvnu.models.thirdparty.draftkings.contests.entries.ContestEntryResult;
 import org.apache.commons.csv.CSVFormat;
 
 import java.nio.charset.Charset;
