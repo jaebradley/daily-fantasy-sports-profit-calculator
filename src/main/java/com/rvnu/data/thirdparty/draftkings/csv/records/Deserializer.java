@@ -13,6 +13,7 @@ public class Deserializer extends AbstractDeserializer<ContestEntryResult, com.r
             CSVFormat.DEFAULT
                     .builder()
                     .setHeader("\"Sport\",\"Game_Type\",\"Entry_Key\",\"Entry\",\"Contest_Key\",\"Contest_Date_EST\",\"Place\",\"Points\",\"Winnings_Non_Ticket\",\"Winnings_Ticket\",\"Contest_Entries\",\"Entry_Fee\",\"Prize_Pool\",\"Places_Paid\"")
+                    .setSkipHeaderRecord(true)
                     .build(),
             com.rvnu.data.thirdparty.draftkings.csv.record.impl.Deserializer.getInstance()
     );

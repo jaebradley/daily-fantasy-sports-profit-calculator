@@ -16,7 +16,7 @@ public class ContestStartTimeSerializationUtility implements Serializer<ContestS
     private static final ContestStartTimeSerializationUtility INSTANCE = new ContestStartTimeSerializationUtility(
             Instant::toString,
             new AbstractLocalDateTimeSerializationUtility(
-                    DateTimeFormatter.ofPattern("YYYY-MM-DD HH:mm:ss")
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
             ) {
             },
             ZoneId.of("America/New_York")
