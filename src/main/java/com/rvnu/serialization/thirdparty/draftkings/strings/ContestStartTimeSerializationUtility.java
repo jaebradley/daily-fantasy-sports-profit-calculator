@@ -5,16 +5,15 @@ import com.rvnu.serialization.firstparty.strings.impl.AbstractLocalDateTimeSeria
 import com.rvnu.serialization.firstparty.strings.interfaces.Deserializer;
 import com.rvnu.serialization.firstparty.strings.interfaces.Serializer;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.chrono.ChronoZonedDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public class ContestStartTimeSerializationUtility implements Serializer<ContestStartTime>, Deserializer<ContestStartTime> {
     private static final ContestStartTimeSerializationUtility INSTANCE = new ContestStartTimeSerializationUtility(
-            Instant::toString,
+            ZonedDateTime::toString,
             new AbstractLocalDateTimeSerializationUtility(
                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
             ) {
@@ -22,12 +21,12 @@ public class ContestStartTimeSerializationUtility implements Serializer<ContestS
             ZoneId.of("America/New_York")
     );
 
-    private final Serializer<Instant> startTimeSerializer;
+    private final Serializer<ZonedDateTime> startTimeSerializer;
     private final Deserializer<LocalDateTime> localDateTimeDeserializer;
     private final ZoneId timeZone;
 
     private ContestStartTimeSerializationUtility(
-            final Serializer<Instant> startTimeSerializer,
+            final Serializer<ZonedDateTime> startTimeSerializer,
             final Deserializer<LocalDateTime> localDateTimeDeserializer,
             final ZoneId timeZone
     ) {
@@ -41,7 +40,6 @@ public class ContestStartTimeSerializationUtility implements Serializer<ContestS
         return localDateTimeDeserializer
                 .deserialize(value)
                 .map(localDateTime -> localDateTime.atZone(timeZone))
-                .map(ChronoZonedDateTime::toInstant)
                 .map(ContestStartTime::new);
     }
 

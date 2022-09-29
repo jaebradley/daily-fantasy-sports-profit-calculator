@@ -21,8 +21,17 @@ public class SportTranslator implements Translator<Sport, com.rvnu.models.firstp
         }
     }
 
+    private static final SportTranslator INSTANCE = new SportTranslator();
+
+    private SportTranslator() {
+    }
+
     @Override
     public Optional<com.rvnu.models.firstparty.Sport> translate(final Sport sport) {
         return Optional.ofNullable(sportsByDraftKingsSports.get(sport));
+    }
+
+    public static SportTranslator getInstance() {
+        return INSTANCE;
     }
 }

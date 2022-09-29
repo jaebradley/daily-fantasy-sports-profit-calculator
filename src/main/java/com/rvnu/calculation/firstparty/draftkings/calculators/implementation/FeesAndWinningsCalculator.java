@@ -12,11 +12,9 @@ import java.util.function.Supplier;
 
 public class FeesAndWinningsCalculator implements com.rvnu.calculation.firstparty.draftkings.calculators.interfaces.FeesAndWinningsCalculator {
     private final Translator<com.rvnu.models.thirdparty.draftkings.contests.entries.Sport, Sport> sportTranslator;
-    private final Translator<com.rvnu.models.thirdparty.draftkings.contests.entries.Winnings, Winnings> winningsTranslator;
 
-    public FeesAndWinningsCalculator(Translator<com.rvnu.models.thirdparty.draftkings.contests.entries.Sport, Sport> sportTranslator, Translator<com.rvnu.models.thirdparty.draftkings.contests.entries.Winnings, Winnings> winningsTranslator) {
+    public FeesAndWinningsCalculator(final Translator<com.rvnu.models.thirdparty.draftkings.contests.entries.Sport, Sport> sportTranslator) {
         this.sportTranslator = sportTranslator;
-        this.winningsTranslator = winningsTranslator;
     }
 
     @Override
@@ -25,7 +23,11 @@ public class FeesAndWinningsCalculator implements com.rvnu.calculation.firstpart
         try {
             profitBySport.merge(
                     sportTranslator.translate(result.sport()).orElseThrow(),
-                    Map.entry(new Fees(result.entryFee().getValue()), winningsTranslator.translate(result.winnings()).orElseThrow()),
+                    Map.entry(
+                            new Fees(result.entryFee().getValue()),
+                            // TODO: @jbradley move this logic to a utility potentially
+                            new Winnings(result.winnings().nonTicket().getValue().add(result.winnings().ticket().getValue()))
+                    ),
                     (entry1, entry2) -> {
                         try {
                             return Map.entry(
