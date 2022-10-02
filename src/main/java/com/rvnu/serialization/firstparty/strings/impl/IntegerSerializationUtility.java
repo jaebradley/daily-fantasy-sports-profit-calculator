@@ -6,7 +6,7 @@ import com.rvnu.serialization.firstparty.strings.interfaces.Serializer;
 import java.util.Optional;
 
 public class IntegerSerializationUtility implements Serializer<Long>, Deserializer<Long> {
-    private static IntegerSerializationUtility INSTANCE = new IntegerSerializationUtility();
+    private static final IntegerSerializationUtility INSTANCE = new IntegerSerializationUtility();
 
     private IntegerSerializationUtility() {
     }
