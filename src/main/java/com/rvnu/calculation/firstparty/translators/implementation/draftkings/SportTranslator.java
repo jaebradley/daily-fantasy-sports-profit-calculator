@@ -1,6 +1,6 @@
-package com.rvnu.calculation.firstparty.draftkings.translators.implementation;
+package com.rvnu.calculation.firstparty.translators.implementation.draftkings;
 
-import com.rvnu.calculation.firstparty.draftkings.translators.interfaces.Translator;
+import com.rvnu.calculation.firstparty.translators.interfaces.Translator;
 import com.rvnu.models.thirdparty.draftkings.contests.entries.Sport;
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.rvnu.calculation.firstparty.draftkings.translators.interfaces;
+package com.rvnu.calculation.firstparty.translators.interfaces;
 
 import java.util.Optional;
 
