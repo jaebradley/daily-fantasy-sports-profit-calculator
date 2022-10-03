@@ -11,7 +11,7 @@ public class SportTranslator implements Translator<Sport, com.rvnu.models.firstp
     private static final SportTranslator INSTANCE = new SportTranslator(
             new EnumMap<Sport, com.rvnu.models.firstparty.Sport>(
                     Map.of(
-                            Sport.nba, com.rvnu.models.firstparty.Sport.NBA
+                            Sport.NBA, com.rvnu.models.firstparty.Sport.NBA
                     )
             )
     );
