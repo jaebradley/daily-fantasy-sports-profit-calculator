@@ -32,7 +32,7 @@ public class DeserializerTest extends TestCase {
                                 try {
                                     assertEquals(
                                             new ContestEntryResult(
-                                                    Sport.NFL,
+                                                    Sport.Football,
                                                     new EntryKey(3049390519L),
                                                     new ContestKey(121304070L),
                                                     new ContestStartTime(ZonedDateTime.parse("2021-12-25T16:30:00-05:00[America/New_York]")),

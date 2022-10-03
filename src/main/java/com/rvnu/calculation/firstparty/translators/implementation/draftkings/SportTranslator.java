@@ -10,9 +10,9 @@ import java.util.Optional;
 
 public class SportTranslator implements Translator<Sport, com.rvnu.models.firstparty.Sport> {
     private static final EnumMap<Sport, com.rvnu.models.firstparty.Sport> sportsByDraftKingsSports = new EnumMap<Sport, com.rvnu.models.firstparty.Sport>(
-            Map.of(Sport.NFL, com.rvnu.models.firstparty.Sport.NFL,
-                    Sport.NBA, com.rvnu.models.firstparty.Sport.NBA,
-                    Sport.MLB, com.rvnu.models.firstparty.Sport.MLB)
+            Map.of(Sport.Football, com.rvnu.models.firstparty.Sport.NFL,
+                    Sport.Basketball, com.rvnu.models.firstparty.Sport.NBA,
+                    Sport.Baseball, com.rvnu.models.firstparty.Sport.MLB)
     );
 
     static {
