@@ -35,7 +35,7 @@ public class DeserializerTest extends TestCase {
                                     assertEquals(
                                             new Entry(
                                                     new EntryId(1995847859L),
-                                                    Sport.nba,
+                                                    Sport.NBA,
                                                     new StartDate(LocalDate.of(2020, Month.FEBRUARY, 21)),
                                                     new Name("$200K Fri NBA Shot Machine ($50K to 1st)"),
                                                     new SalaryCap(Money.of(60_000, Monetary.getCurrency("USD"))),
