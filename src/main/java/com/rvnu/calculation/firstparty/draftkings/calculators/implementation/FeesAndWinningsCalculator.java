@@ -1,6 +1,6 @@
 package com.rvnu.calculation.firstparty.draftkings.calculators.implementation;
 
-import com.rvnu.calculation.firstparty.draftkings.translators.interfaces.Translator;
+import com.rvnu.calculation.firstparty.translators.interfaces.Translator;
 import com.rvnu.models.firstparty.Fees;
 import com.rvnu.models.firstparty.Sport;
 import com.rvnu.models.firstparty.Winnings;
@@ -10,7 +10,7 @@ import com.rvnu.models.thirdparty.iso.NonNegativeMonetaryValue;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class FeesAndWinningsCalculator implements com.rvnu.calculation.firstparty.draftkings.calculators.interfaces.FeesAndWinningsCalculator {
+public class FeesAndWinningsCalculator implements com.rvnu.calculation.firstparty.calculators.interfaces.FeesAndWinningsCalculator<ContestEntryResult> {
     private final Translator<com.rvnu.models.thirdparty.draftkings.contests.entries.Sport, Sport> sportTranslator;
 
     public FeesAndWinningsCalculator(final Translator<com.rvnu.models.thirdparty.draftkings.contests.entries.Sport, Sport> sportTranslator) {

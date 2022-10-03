@@ -1,7 +1,7 @@
-package com.rvnu.calculation.firstparty.draftkings.calculators.implementation;
+package com.rvnu.calculation.firstparty.fanduel.calculators.implementation;
 
-import com.rvnu.calculation.firstparty.translators.implementation.draftkings.SportTranslator;
-import com.rvnu.data.thirdparty.draftkings.csv.records.Deserializer;
+import com.rvnu.calculation.firstparty.translators.implementation.fanduel.SportTranslator;
+import com.rvnu.data.thirdparty.fanduel.csv.records.Deserializer;
 import com.rvnu.models.firstparty.Fees;
 import com.rvnu.models.firstparty.Sport;
 import com.rvnu.models.firstparty.Winnings;
@@ -16,10 +16,11 @@ public class FeesAndWinningsCalculatorTest extends TestCase {
 
     public void test() {
         final String firstTwoRows = """
-                "Sport","Game_Type","Entry_Key","Entry","Contest_Key","Contest_Date_EST","Place","Points","Winnings_Non_Ticket","Winnings_Ticket","Contest_Entries","Entry_Fee","Prize_Pool","Places_Paid"
-                "NFL","Classic",3049390519,"NFL $5 Double Up (Sat)",121304070,"2021-12-25 16:30:00",321,119.38,"$0.00","$0.00",344,"$5.00","$1,500.00",150
-                "NBA","Classic",2945036612,"NBA Single Entry $5 Double Up",117570665,"2021-11-05 19:00:00",1783,233,"$0.00","$0.00",3191,"$5.00","$15,000.00",1500
-                "MLB","Classic",741872124,"APRIL SILVER STATUS FREE CONTEST [$25K]",40329143,"2017-05-03 19:05:00",23092,0,"$0.00","$0.00",33496,"$0.00","$25,000.00",415
+                Entry Id,Sport,Date,Title,SalaryCap,Score,Opp Score,Position,Entries,Opponent,Entry ($),Winnings ($),Link
+                S1995847859,nba,2020/02/21,$200K Fri NBA Shot Machine ($50K to 1st),$60k,320.60,,8161,30642,Tournament,7.77,0,/entry/CMEEISAUO,
+                S1203809799,nba,2017/04/20,NBA $2 Double Up (Beginners Only),$60k,270.80,,3,22,Tournament,2,4.00,/entry/AIHTOFWHD,
+                S1203809678,nba,2017/04/20,NBA $1 50/50 Contest (Beginners Only) (Main),$60k,270.80,,2,20,Tournament,1,1.80,/entry/DBYUWFHEN,
+                S1203809087,nba,2017/04/20,NBA $1 50/50 Contest (Beginners Only) (Main),$60k,270.80,,3,20,Tournament,1,1.80,/entry/DVFIKNNDP,
                 """;
 
         final FeesAndWinningsCalculator feesAndWinningsCalculator = new FeesAndWinningsCalculator(SportTranslator.getInstance());
