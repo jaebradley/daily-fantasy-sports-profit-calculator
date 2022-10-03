@@ -18,7 +18,7 @@ public class SportSerializationUtility extends AbstractEnumSerializationUtility<
     );
 
     private SportSerializationUtility(final EnumMap<Sport, String> serializationsByValue) {
-        super(serializationsByValue);
+        super(serializationsByValue, Sport.class);
     }
 
     public static SportSerializationUtility getInstance() {

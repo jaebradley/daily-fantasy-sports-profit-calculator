@@ -12,7 +12,7 @@ public abstract class AbstractEnumSerializationUtility<T extends Enum<T>> implem
     private final EnumMap<T, String> serializationsByValue;
     private final Map<String, T> valuesBySerialization;
 
-    public AbstractEnumSerializationUtility(final EnumMap<T, String> serializationsByValue) {
+    public AbstractEnumSerializationUtility(final EnumMap<T, String> serializationsByValue, final Class<T> keyClass) {
         this.serializationsByValue = serializationsByValue;
         this.valuesBySerialization = serializationsByValue
                 .entrySet()
@@ -23,6 +23,10 @@ public abstract class AbstractEnumSerializationUtility<T extends Enum<T>> implem
                                 Map.Entry::getKey
                         )
                 );
+
+        if (keyClass.getEnumConstants().length != serializationsByValue.size()) {
+            throw new RuntimeException("All enumerated values should be serialized");
+        }
     }
 
     @Override

@@ -18,7 +18,7 @@ public class ContestTypeSerializationUtility extends AbstractEnumSerializationUt
     );
 
     private ContestTypeSerializationUtility(final EnumMap<ContestType, String> serializationsByValue) {
-        super(serializationsByValue);
+        super(serializationsByValue, ContestType.class);
     }
 
     public static ContestTypeSerializationUtility getInstance() {
